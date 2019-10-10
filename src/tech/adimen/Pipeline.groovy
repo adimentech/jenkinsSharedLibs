@@ -4,8 +4,6 @@ package tech.adimen
 @Singleton()
 class Pipeline implements Serializable {
 
-    private static Pipeline pipelineInstance
-
     private Map config = [
             kubernetes: [
                     serverUrl: "https://kubernetes.default",
@@ -21,16 +19,12 @@ class Pipeline implements Serializable {
 
     private Map postStepsErrors = [:]
 
-    public static Pipeline getInstance() {
-        if (pipelineInstance == null) {
-            pipelineInstance = Pipeline.instance.init(null)
-        }
-
-        return pipelineInstance
+    public init(Map pipelineConfig) {
+        if( pipelineConfig in Map ) this.config = this.config << pipelineConfig
+        this
     }
 
-    public init(pipelineConfig = null) {
-        if( pipelineConfig in Map ) this.config = this.config << pipelineConfig
+    public init() {
         this
     }
 
