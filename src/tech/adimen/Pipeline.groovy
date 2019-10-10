@@ -18,7 +18,7 @@ class Pipeline implements Serializable {
 
     private Map postStepsErrors = [:]
 
-    public reconfigure(pipelineConfig = null) {
+    public init(pipelineConfig = null) {
         if( pipelineConfig in Map ) this.config = this.config << pipelineConfig
         this
     }
