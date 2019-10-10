@@ -1,7 +1,7 @@
 package tech.adimen
 
 
-@Singleton(lazy = true)
+@Singleton()
 class Pipeline implements Serializable {
     private Map config = [
             kubernetes: [
