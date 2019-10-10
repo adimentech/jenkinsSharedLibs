@@ -12,7 +12,8 @@ class Pipeline implements Serializable {
             jcasc: [
                     gitURL: "git@bitbucket.org:adimentech/jcasc.git",
                     credentialsId: "bitbucket_ssh_access"
-            ]
+            ],
+            helm: []
     ]
 
     private Map postSteps = [:]
