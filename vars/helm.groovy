@@ -1,17 +1,16 @@
-import groovy.transform.Field
 import tech.adimen.Pipeline
 
-def install(name, namespace, chart, args = '') {
+def install(name, namespace, chart, String args = '') {
     upgrade(name, namespace, chart, args)
 }
 
-def upgrade(name, namespace, chart, args = '') {
+def upgrade(name, namespace, chart, String args = '') {
     k8s.with {
         sh "helm upgrade --install --wait ${name} ${chart} ${args} --namespace ${namespace}"
     }
 }
 
-def delete(name, namespace = 'default') {
+def delete(name, String namespace = 'default') {
     k8s.with {
         sh "helm delete --purge ${name}"
     }
@@ -26,6 +25,6 @@ def init() {
     }
 }
 
-def test() {
+def version() {
     sh 'helm version'
 }
