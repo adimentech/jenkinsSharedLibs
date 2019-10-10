@@ -2,7 +2,7 @@ import groovy.transform.Field
 import tech.adimen.Pipeline
 
 @Field
-def cfg = Pipeline.instance.getConfig('helm')
+def cfg = Pipeline.getInstance.getConfig('helm')
 
 def install(name, namespace, chart, args = '') {
     upgrade(name, namespace, chart, args)
