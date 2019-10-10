@@ -19,15 +19,13 @@ def delete(name, namespace = 'default') {
 
 def init() {
     def cfg = Pipeline.instance.getConfig('helm')
-    environment {
-        HELM = tool name: 'helm2', type: 'com.cloudbees.jenkins.plugins.customtools.CustomTool'
-    }
-    sh '${HELM}/helm init --client-only'
+
+    sh 'helm init --client-only'
     for (repo in cfg.repositories) {
-        sh "\${HELM}/helm repo add ${repo.name} ${repo.URL}"
+        sh "helm repo add ${repo.name} ${repo.URL}"
     }
 }
 
 def test() {
-    sh '${HELM}/helm version'
+    sh 'helm version'
 }
