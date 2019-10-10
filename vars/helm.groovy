@@ -1,8 +1,8 @@
 import groovy.transform.Field
 import tech.adimen.Pipeline
 
-@Field
-def cfg = Pipeline.instance.getConfig('helm')
+//@Field
+//def cfg = Pipeline.instance.getConfig('helm')
 
 def install(name, namespace, chart, args = '') {
     upgrade(name, namespace, chart, args)
@@ -21,6 +21,7 @@ def delete(name, namespace = 'default') {
 }
 
 def init() {
+    def cfg = Pipeline.instance.getConfig('helm')
     sh 'helm init --client-only'
     for (repo in cfg.repositories) {
         sh "helm repo add ${repo.name} ${repo.URL}"
