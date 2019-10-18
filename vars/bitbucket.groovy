@@ -1,3 +1,4 @@
+@Grab("groovyx.net.http")
 import groovyx.net.http.HTTPBuilder
 import static groovyx.net.http.ContentType
 
