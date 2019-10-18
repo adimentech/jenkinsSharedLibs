@@ -10,3 +10,7 @@ def fileFromTemplate(fileName, templatePath, variables) {
     def output = renderTemplate(template, variables)
     writeFile file: fileName, text: output
 }
+
+def getChanges() {
+
+}
