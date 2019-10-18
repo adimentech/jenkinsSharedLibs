@@ -1,7 +1,7 @@
 def prComment(String message) {
     withCredentials([usernamePassword(credentialsId: 'bitbucket_http_access', passwordVariable: 'bb_pass', usernameVariable: 'bb_user')]) {
         try {
-            def baseUrl = new URL("https://api.bitbucket.org/2.0/repositories/ClarizenInt/tf/pullrequests/7/comments").openConnection()
+            def baseUrl = new URL("https://api.bitbucket.org/2.0/repositories/ClarizenInt/tf/pullrequests/12/comments").openConnection()
             def comment = "{'content': {'raw': ${message}}"
             baseUrl.setRequestMethod("POST")
             baseUrl.setDoOutput(true)
